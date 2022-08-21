@@ -27,3 +27,48 @@ header {
     letter-spacing: -0.02em;
     color: white;
 }
+
+main {
+    background-color: #151515;
+}
+
+.card {
+    background: #0D0D0D;
+    border: 1px solid #434343;
+    text-align: center;
+}
+
+.card-title {
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 33px;
+    color: white;
+}
+
+.card-text {
+    font-size: 16px;
+    line-height: 22px;
+    color: #B3B3B3;
+}
+
+.select-btn {
+    padding: 10px 80px;
+    background: #015196;
+}
+
+aside {
+    background: #0D0D0D;
+}
+
+aside h3 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
