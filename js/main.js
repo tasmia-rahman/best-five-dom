@@ -24,3 +24,14 @@ for (const selectButton of selectButtons) {
     })
 }
 
+function playerList() {
+    const playerListContainer = document.getElementById("player-list-container");
+    return playerListContainer.childElementCount;
+}
+
+// Calculate player expenses
+document.getElementById("calculate-btn").addEventListener("click", function () {
+    const playerNumber = playerList();
+    const perPlayerPayAmount = document.getElementById("per-player-pay-amount").value;
+    document.getElementById("player-expenses").innerText = playerNumber * perPlayerPayAmount;
+})
