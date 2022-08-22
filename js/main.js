@@ -31,7 +31,41 @@ function playerList() {
 
 // Calculate player expenses
 document.getElementById("calculate-btn").addEventListener("click", function () {
+    // Get player number
     const playerNumber = playerList();
+
+    // Get per player pay amount
     const perPlayerPayAmount = document.getElementById("per-player-pay-amount").value;
-    document.getElementById("player-expenses").innerText = playerNumber * perPlayerPayAmount;
+
+    if (isNaN(perPlayerPayAmount) === true) {
+        alert("Please input a number.")
+    } else {
+        // Get player expenses
+        document.getElementById("player-expenses").innerText = playerNumber * perPlayerPayAmount;
+    }
+})
+
+// Calculate total expenses
+document.getElementById("calculate-total-btn").addEventListener("click", function () {
+    // Player expenses
+    const playerExpensesString = document.getElementById("player-expenses").innerText;
+    const playerExpenses = parseInt(playerExpensesString);
+
+    // Manager expenses
+    const managerPayAmountString = document.getElementById("manager-pay-amount").value;
+    const managerPayAmount = parseInt(managerPayAmountString);
+    if (isNaN(managerPayAmount) === true) {
+        alert("Please input a number.")
+    }
+
+    // Coach expenses
+    const coachPayAmountString = document.getElementById("coach-pay-amount").value;
+    const coachPayAmount = parseInt(coachPayAmountString);
+    if (isNaN(coachPayAmount) === true) {
+        alert("Please input a number.")
+    }
+
+    // Total expenses
+    const totalExpenses = playerExpenses + managerPayAmount + coachPayAmount;
+    document.getElementById("total").innerText = totalExpenses;
 })
