@@ -24,15 +24,20 @@ for (const selectButton of selectButtons) {
     })
 }
 
-function getInputFieldValueById(inputFieldId) {
-    const inputField = document.getElementById(inputFieldId);
-    const inputFieldValueString = inputField.value;
-    const inputFieldValue = parseInt(inputFieldValueString);
+function getElementValueById(elementId, isInputField) {
+    const element = document.getElementById(elementId);
+    let elementValueString;
+    if (isInputField === true) {
+        elementValueString = element.value;
+    } else {
+        elementValueString = element.innerText;
+    }
+    const elementValue = parseInt(elementValueString);
 
-    if (isNaN(inputFieldValue) === true) {
+    if (isNaN(elementValue) === true) {
         alert("Please input a number.")
     } else {
-        return inputFieldValue;
+        return elementValue;
     }
 }
 
@@ -43,7 +48,7 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
     const playerNumber = playerListContainer.childElementCount;
 
     // Get per player pay amount
-    const perPlayerPayAmount = getInputFieldValueById("per-player-pay-amount");
+    const perPlayerPayAmount = getElementValueById("per-player-pay-amount", true);
 
     // Get player expenses
     document.getElementById("player-expenses").innerText = playerNumber * perPlayerPayAmount;
@@ -52,14 +57,13 @@ document.getElementById("calculate-btn").addEventListener("click", function () {
 // Calculate total expenses
 document.getElementById("calculate-total-btn").addEventListener("click", function () {
     // Player expenses
-    const playerExpensesString = document.getElementById("player-expenses").innerText;
-    const playerExpenses = parseInt(playerExpensesString);
+    const playerExpenses = getElementValueById("player-expenses", false);
 
     // Manager expenses
-    const managerPayAmount = getInputFieldValueById("manager-pay-amount");
+    const managerPayAmount = getElementValueById("manager-pay-amount", true);
 
     // Coach expenses
-    const coachPayAmount = getInputFieldValueById("coach-pay-amount");
+    const coachPayAmount = getElementValueById("coach-pay-amount", true);
 
     // Total expenses
     const totalExpenses = playerExpenses + managerPayAmount + coachPayAmount;
